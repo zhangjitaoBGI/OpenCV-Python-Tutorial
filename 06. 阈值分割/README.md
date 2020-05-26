@@ -1,6 +1,6 @@
 # [OpenCV-Python教程06：阈值分割](http://ex2tron.wang/opencv-python-image-thresholding/)
 
-![](http://pic.ex2tron.top/cv2_threshold_binary_demo.jpg)
+![](http://blog.codec.wang/cv2_threshold_binary_demo.jpg)
 
 学习使用不同的阈值方法"二值化"图像。<!-- more -->图片等可到[源码处](#引用)下载。
 
@@ -17,7 +17,7 @@
 
 固定阈值分割很直接，一句话说就是像素点值大于阈值变成一类值，小于阈值变成另一类值。
 
-![](http://pic.ex2tron.top/cv2_threshold_binary_demo.jpg)
+![](http://blog.codec.wang/cv2_threshold_binary_demo.jpg)
 
 ```python
 import cv2
@@ -35,7 +35,7 @@ cv2.waitKey(0)
 
 - 参数1：要处理的原图，**一般是灰度图**
 - 参数2：设定的阈值
-- 参数3：最大阈值，一般为255
+- 参数3：对于`THRESH_BINARY`、`THRESH_BINARY_INV`阈值方法所选用的最大阈值，一般为255
 - 参数4：阈值的方式，主要有5种，详情：[ThresholdTypes](https://docs.opencv.org/4.0.0/d7/d1b/group__imgproc__misc.html#gaa9e58d2860d4afa658ef70a9b1115576)
 
 下面结合代码理解下这5种阈值方式：
@@ -63,11 +63,11 @@ for i in range(6):
 plt.show()
 ```
 
-![5种不同的阈值方式结果](http://pic.ex2tron.top/cv2_different_threshold_demo.jpg)
+![5种不同的阈值方式结果](http://blog.codec.wang/cv2_different_threshold_demo.jpg)
 
 > 经验之谈：很多人误以为阈值分割就是[二值化](https://baike.baidu.com/item/%E4%BA%8C%E5%80%BC%E5%8C%96)。从上图中可以发现，两者并不等同，阈值分割结果是两类值，而不是两个值，所以教程开头我把二值化加了引号。
 
-![](http://pic.ex2tron.top/cv2_different_thresholds_theory.jpg)
+![](http://blog.codec.wang/cv2_different_thresholds_theory.jpg)
 
 ### 自适应阈值
 
@@ -95,14 +95,14 @@ for i in range(4):
 plt.show()
 ```
 
-![自适应阈值对比固定阈值](http://pic.ex2tron.top/cv2_adaptive_vs_global_thresholding.jpg)
+![自适应阈值对比固定阈值](http://blog.codec.wang/cv2_adaptive_vs_global_thresholding.jpg)
 
 - 参数1：要处理的原图
 - 参数2：最大阈值，一般为255
 - 参数3：小区域阈值的计算方式
     - `ADAPTIVE_THRESH_MEAN_C`：小区域内取均值
     - `ADAPTIVE_THRESH_GAUSSIAN_C`：小区域内加权求和，权重是个高斯核
-- 参数4：阈值方式（跟前面讲的那5种相同）
+- 参数4：阈值方法，只能使用`THRESH_BINARY`、`THRESH_BINARY_INV`，具体见前面所讲的阈值方法
 - 参数5：小区域的面积，如11就是11*11的小块
 - 参数6：最终阈值等于小区域计算出的阈值再减去此值
 
